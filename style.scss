@@ -1,22 +1,74 @@
 html{
     height: 100%;
+    width:100%;
     
     body{
-        display: flex;
-        flex-direction: row;
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-areas: "his main sci";
         height: 100%;
-        
+        width: 100%;
 
         #history{
-            order: 1;
+            grid-area: his;
+            background-color: grey;
         }
 
         #main{
-            order: 2;
+            grid-area: main;
+            background-color: green;
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            grid-template-rows: 1fr 3fr;
+            grid-template-areas: "left view-point right"
+                                 "left numbers right";
+
+            .side-left{
+                grid-area: left;
+            }
+
+            .main-buttons{
+                grid-area: numbers;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+
+                #empty{
+                    grid-column: 1/-1;
+                }
+                
+            }
+            
+            .view{
+                grid-area:view-point;
+                display: grid;
+                grid-template-rows: 1fr 1fr 1fr;
+
+                div{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                #screen{
+                    background-color: yellow;
+                    border: solid black;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    
+                }
+            }
+
+            .right-side{
+                grid-area: right;
+                display: grid;
+                grid-template-rows: repeat(7,1fr)
+            }
         }
 
         #scientific{
-            order: 3;
+            grid-area: sci;
+            background-color: red;
         }
     }
 }
