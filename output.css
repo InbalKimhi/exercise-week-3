@@ -1,0 +1,19 @@
+html {
+  height: 100%;
+}
+html body {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+html body #history {
+  order: 1;
+}
+html body #main {
+  order: 2;
+}
+html body #scientific {
+  order: 3;
+}
+
+/*# sourceMappingURL=output.css.map */
