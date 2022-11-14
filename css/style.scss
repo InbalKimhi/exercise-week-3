@@ -1,0 +1,296 @@
+html{
+    height: 100%;
+    width:100%;
+    margin: 0%;
+    body{
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-areas: "his main sci";
+        height: 100%;
+        width: 100%;
+        margin: 0%;
+
+        #history{
+            grid-area: his;
+            background-color: rgb(214, 209, 209);
+        }
+
+        #main{
+            grid-area: main;
+            background-color: grey;
+            display: grid;
+            grid-template-columns: 0.5fr repeat(3, 1fr) 0.5fr;
+            grid-template-rows: repeat(3, 0.5fr)  repeat(4, 1fr) 0.3fr;
+            border: solid grey;
+            
+            button{
+                background-color: rgb(206, 228, 248);
+                border: solid grey;
+            }
+
+            .left-side{
+                grid-column: 1/2;
+                grid-row: 1/-1;
+                display: grid;
+                grid-template-rows: repeat(3, 0.5fr) repeat(4, 1fr) 0.3fr;
+                
+                .mode{
+                    &:hover{
+                        background-color: rgb(212, 212, 212);
+                        font-weight: bold;
+                    } 
+                }
+                button{
+                    border-radius: 6%;
+                    
+                    img{
+                        width:40%;
+                        height: 50%;
+                    }
+                   
+                }
+
+                #endL{
+                    grid-row: 7/-1;
+                }
+            }
+
+            .view{
+                grid-column: 2/5;
+                grid-row: 1/4;
+                display: grid;
+                grid-template-rows: repeat(3, 1fr);
+                
+                #C-button{
+                    &:hover{
+                        background-color: rgb(212, 212, 212);
+                        font-weight: bold;
+                    }
+                }
+
+                div{
+                    background-color: rgb(206, 228, 248);
+                    border: solid grey;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    
+                }
+
+                #screen{
+                    background-color: rgb(244, 244, 244);
+                    border-color: black;
+                    
+                }
+            }
+
+            .main-buttons{
+                grid-column: 2/5;
+                grid-row: 4/-1;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows:  repeat(4, 1fr) 0.3fr;
+
+                .number-buttons{
+                    background-color: rgb(234, 234, 234);
+                    color: black;
+                    font-weight: bold;
+                    border-radius: 6%;
+                    font-family: Georgia, 'Times New Roman', Times, serif; 
+
+                    &:hover{
+                        background-color: rgb(212, 212, 212);
+                        
+                    }
+
+                    &:active{
+                        font-family: none;
+                    }
+                }
+
+                #empty{
+                    grid-column: 1/-1;
+                 }
+
+                #plus-minus{
+                    background-color: rgb(206, 228, 248);
+                    &:hover{
+                        background-color: rgb(212, 212, 212);
+                        
+                    }
+
+                    &:active{
+                        font-family: none;
+                    }
+                }
+
+            }
+
+            .right-side{
+                grid-column: 5/-1;
+                grid-row: 1/-1;
+                display: grid;
+                grid-template-rows: repeat(3, 0.5fr) repeat(4, 1fr) 0.3fr;
+                
+                button{
+                    border-radius: 6%;
+
+                    &:hover{
+                        background-color: rgb(212, 212, 212);
+                        font-weight: bold;
+                    }
+
+                    img{
+                        width: 40%;
+                        height: 50%;
+                    }
+                }
+
+                #endR{
+                    grid-row: 7/-1;
+                }
+            }
+
+            
+
+        }
+
+        #scientific{
+            grid-area: sci;
+            background-color: rgb(250, 173, 173);
+        }
+    }
+}
+
+
+
+
+@media (prefers-color-scheme:dark ){
+
+    html{
+
+        body{
+
+            #history{
+                background-color: rgb(209, 212, 214);
+            }
+    
+            #main{
+                background-color: rgb(2, 50, 77);
+                border: solid rgb(2, 50, 77);
+                color: white;
+                button{
+                    background-color: rgb(21, 81, 115);
+                    border: solid rgb(2, 50, 77);
+                }
+                
+                .left-side{
+                    color: white;
+                    .mode{
+
+                        &:hover{
+                            background-color: rgb(78, 92, 169);
+                            font-weight: bold;
+                        } 
+                    }
+                }
+    
+                .view{
+                    color: white;
+                    #C-button{
+                        color: white;
+                        &:hover{
+                            background-color: rgb(78, 92, 169);
+                            font-weight: bold;
+                        }
+                    }
+    
+                    div{
+                        background-color: rgb(21, 81, 115);
+                        border: solid rgb(2, 50, 77);
+                    }
+    
+                    #screen{
+                        background-color: rgb(30, 17, 44);
+                        border-color: black;
+                        
+                    }
+                }
+    
+                .main-buttons{
+                    
+                    .number-buttons{
+                        background-color: rgb(58, 111, 142);
+                        color: black;
+                        color: white;
+    
+                        &:hover{
+                            background-color: rgb(78, 92, 169);
+                            
+                        }
+                    }
+
+                    #plus-minus{
+                        background-color: rgb(21, 81, 115);
+                        color: white;
+                        &:hover{
+                            background-color: rgb(78, 92, 169);
+                            
+                        }
+
+                    }
+    
+                }
+    
+                .right-side{
+
+                    button{
+                        color: white;
+                        &:hover{
+                            background-color: rgb(78, 92, 169);
+                            font-weight: bold;
+                        }
+                    }
+                }
+
+            }
+    
+            #scientific{
+                grid-area: sci;
+                background-color: rgb(250, 173, 173);
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 1000px){
+    html{
+        margin: 0%;
+
+        body{
+            margin: 0%;
+            height: 100%;
+            display:grid;
+            grid-template-columns: none;
+            grid-template-rows: 3fr 1fr 1fr;
+            grid-template-areas: "main"
+                                "sci"
+                                "histo";
+
+            #history{
+                grid-area: histo;
+            }
+
+            #main{
+                grid-area: main;
+            }
+
+            #scientific{
+                grid-area: sci;
+            }
+
+        }
+    }
+}
+
