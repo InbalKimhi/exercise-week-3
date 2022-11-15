@@ -47,7 +47,14 @@ Numbers.map( (y) => {
     }) 
 })
 
+document.getElementById('C-button').addEventListener('click',(event) =>{
+    num1 = '';
+    op = undefined;
+    num2 = '';
+    
+}
 
+)
 //function displayButtonInfo(value){
     //alert(`${value}`);
     
