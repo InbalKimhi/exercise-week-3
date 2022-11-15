@@ -55,6 +55,20 @@ document.getElementById('C-button').addEventListener('click',(event) =>{
 }
 
 )
+
+document.getElementById('erase').addEventListener('click',(event) =>{
+    if(num2){
+        num2 = num2.replace( num2[num2.length - 1],'')
+    }
+    else if (op !== undefined ){
+        op = undefined
+    }else{
+       num1 = num1.replace( num1[num1.length - 1],'')
+    }
+}
+
+)
+
 //function displayButtonInfo(value){
     //alert(`${value}`);
     
