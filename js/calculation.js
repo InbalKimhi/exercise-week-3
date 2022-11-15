@@ -10,16 +10,24 @@ const ops = Array.from(document.getElementsByClassName("operators"))
 
 
 ops.map( x => {
-    x.addEventListener('click',(event)=>{
-        if(num1 && num2){
+    x.addEventListener('click',(event)=>{ 
+        if (event.target.innerText === '='){
+            result = eval(num1 + op + num2);
+            num1= ''
+            op = undefined
+            num2 = ''
+            alert(result)
+            
+
+        }else if(num1 && num2 && op !== '='){
             num1 = eval(num1 + op + num2);
             op = event.target.innerText;
-        }
-        if (event.target.innerText=== '='){
-            result = eval(num1 + op + num2);
+            num2 = '';
             
+
         }else{
             op = event.target.innerText;
+            
         }
         
     }) 
