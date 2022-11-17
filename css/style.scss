@@ -165,11 +165,11 @@ html{
 
 
 
-@media (prefers-color-scheme:dark ){
+
 
     html{
 
-        body{
+        body.dark{
 
             #history{
                 background-color: rgb(209, 212, 214);
@@ -262,7 +262,7 @@ html{
         }
     }
 
-}
+
 
 @media screen and (max-width: 1000px){
     html{
@@ -288,9 +288,11 @@ html{
 
             #scientific{
                 grid-area: sci;
+                
             }
 
         }
     }
 }
+
 
