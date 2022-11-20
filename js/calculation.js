@@ -27,7 +27,7 @@ ops.map( x => {
             
 
         }else{
-            op = event.target.innerText;
+            op = event.target.id;
             document.getElementById('screen').innerText = `${num1} ${op}`
             
         }
@@ -39,6 +39,11 @@ const Numbers = Array.from(document.getElementsByClassName("number-buttons"))
 
 Numbers.map( (y) => {
     y.addEventListener('click',(event)=>{
+        if(event.target.innerText === '.'){
+            if(!num1) return;
+            
+        }
+        
         if(op === undefined){
             num1 += event.target.innerText;
             document.getElementById('screen').innerText = `${num1}`
@@ -47,6 +52,7 @@ Numbers.map( (y) => {
             num2 += event.target.innerText;
             document.getElementById('screen').innerText = `${num1} ${op} ${num2}`
         }
+
     }) 
 })
 
