@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   height: 100%;
   width: 100%;
@@ -12,6 +13,7 @@ html body {
   margin: 0%;
 }
 html body #history {
+  display: none;
   grid-area: his;
   background-color: rgb(214, 209, 209);
 }
@@ -91,13 +93,13 @@ html body #main .main-buttons .number-buttons:active {
 html body #main .main-buttons #empty {
   grid-column: 1/-1;
 }
-html body #main .main-buttons #plus-minus {
+html body #main .main-buttons #± {
   background-color: rgb(206, 228, 248);
 }
-html body #main .main-buttons #plus-minus:hover {
+html body #main .main-buttons #±:hover {
   background-color: rgb(212, 212, 212);
 }
-html body #main .main-buttons #plus-minus:active {
+html body #main .main-buttons #±:active {
   font-family: none;
 }
 html body #main .right-side {
@@ -121,75 +123,15 @@ html body #main .right-side #endR {
   grid-row: 7/-1;
 }
 html body #scientific {
+  display: none;
   grid-area: sci;
   background-color: rgb(250, 173, 173);
 }
 
-@media (prefers-color-scheme: dark) {
-  html body #history {
-    background-color: rgb(209, 212, 214);
-  }
-  html body #main {
-    background-color: rgb(2, 50, 77);
-    border: solid rgb(2, 50, 77);
-    color: white;
-  }
-  html body #main button {
-    background-color: rgb(21, 81, 115);
-    border: solid rgb(2, 50, 77);
-  }
-  html body #main .left-side {
-    color: white;
-  }
-  html body #main .left-side .mode:hover {
-    background-color: rgb(78, 92, 169);
-    font-weight: bold;
-  }
-  html body #main .view {
-    color: white;
-  }
-  html body #main .view #C-button {
-    color: white;
-  }
-  html body #main .view #C-button:hover {
-    background-color: rgb(78, 92, 169);
-    font-weight: bold;
-  }
-  html body #main .view div {
-    background-color: rgb(21, 81, 115);
-    border: solid rgb(2, 50, 77);
-  }
-  html body #main .view #screen {
-    background-color: rgb(30, 17, 44);
-    border-color: black;
-  }
-  html body #main .main-buttons .number-buttons {
-    background-color: rgb(58, 111, 142);
-    color: black;
-    color: white;
-  }
-  html body #main .main-buttons .number-buttons:hover {
-    background-color: rgb(78, 92, 169);
-  }
-  html body #main .main-buttons #plus-minus {
-    background-color: rgb(21, 81, 115);
-    color: white;
-  }
-  html body #main .main-buttons #plus-minus:hover {
-    background-color: rgb(78, 92, 169);
-  }
-  html body #main .right-side button {
-    color: white;
-  }
-  html body #main .right-side button:hover {
-    background-color: rgb(78, 92, 169);
-    font-weight: bold;
-  }
-  html body #scientific {
-    grid-area: sci;
-    background-color: rgb(250, 173, 173);
-  }
+body.dark #main .view #screen {
+  background-color: yellow;
 }
+
 @media screen and (max-width: 1000px) {
   html {
     margin: 0%;

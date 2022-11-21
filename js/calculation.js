@@ -1,89 +1,139 @@
 // NUMBER   1-.RESLT
 // SEC       -ץ
 // NUBER
-let num1 = '';
-let op = undefined;
-let num2 = '';
-let result = '';
-
-const ops = Array.from(document.getElementsByClassName("operators"))
-
-
-ops.map( x => {
-    x.addEventListener('click',(event)=>{ 
-        if (event.target.innerText === '='){
-            result = eval(num1 + op + num2);
-            num1= ''
-            op = undefined
-            num2 = ''
-            document.getElementById('screen').innerText = `${result}`
-            
-
-        }else if(num1 && num2 && op !== '='){
-            num1 = eval(num1 + op + num2);
-            op = event.target.innerText;
-            num2 = '';
-            document.getElementById('screen').innerText = `${num1} ${op}`
-            
-
-        }else{
-            op = event.target.id;
-            document.getElementById('screen').innerText = `${num1} ${op}`
-            
+var num1 = '';
+var op = undefined;
+var num2 = '';
+var result = '';
+var op2 = undefined;
+var num3 = '';
+var ops = Array.from(document.getElementsByClassName("operators"));
+var bla = document.getElementById('screen').innerText;
+ops.map(function (x) {
+    x.addEventListener('click', function (event) {
+        var element = event.target;
+        if (!scientificState.on) {
+            if (!num1)
+                return;
+            if (element.innerText === '=') {
+                result = eval(num1 + op + num2);
+                num1 = '';
+                op = undefined;
+                num2 = '';
+                document.getElementById('screen').innerText = "".concat(result);
+            }
+            else if (num1 && num2 && op !== '=') {
+                num1 = eval(num1 + op + num2);
+                op = element.id;
+                num2 = '';
+                document.getElementById('screen').innerText = "".concat(num1, " ").concat(op);
+            }
+            else {
+                op = element.id;
+                document.getElementById('screen').innerText = "".concat(num1, " ").concat(op);
+            }
         }
-        
-    }) 
-})
-
-const Numbers = Array.from(document.getElementsByClassName("number-buttons"))
-
-Numbers.map( (y) => {
-    y.addEventListener('click',(event)=>{
-        if(event.target.innerText === '.'){
-            if(!num1) return;
-            
+        else { // if scientific mode on 
+            console.log('science');
+            if (!num1)
+                return;
+            if (element.innerText === '=') {
+                if (num3) {
+                    result = eval(num1 + op + num2 + op2 + num3);
+                    console.log(result);
+                    num1 = '';
+                    op = undefined;
+                    num2 = '';
+                    op2 = undefined;
+                    num3 = '';
+                    console.log(result);
+                    console.log(result);
+                    document.getElementById('screen').innerText = "".concat(result);
+                }
+                else {
+                    result = eval(num1 + op + num2);
+                    num1 = '';
+                    op = undefined;
+                    num2 = '';
+                    op2 = undefined;
+                    num3 = '';
+                    document.getElementById('screen').innerText = "".concat(result);
+                }
+            }
+            else if (num1 && num2 && num3 && op2 !== '=') {
+                num1 = eval(num1 + op + num2 + op2 + num3);
+                op = element.id;
+                num2 = '';
+                op2 = undefined;
+                num3 = '';
+                document.getElementById('screen').innerText = "".concat(num1, " ").concat(op);
+            }
+            else if (op) {
+                op2 = element.id;
+                document.getElementById('screen').innerText = "".concat(num1, " ").concat(op, " ").concat(num2, " ").concat(op2);
+            }
+            else {
+                op = element.id;
+                document.getElementById('screen').innerText = "".concat(num1, " ").concat(op);
+            }
         }
-        
-        if(op === undefined){
-            num1 += event.target.innerText;
-            document.getElementById('screen').innerText = `${num1}`
-            
-        }else{
-            num2 += event.target.innerText;
-            document.getElementById('screen').innerText = `${num1} ${op} ${num2}`
+    });
+});
+var Numbers = Array.from(document.getElementsByClassName("number-buttons"));
+Numbers.map(function (y) {
+    y.addEventListener('click', function (event) {
+        var element = event.target;
+        if (!scientificState.on) {
+            if (element.innerText === '.') {
+                if (!num1)
+                    return;
+            }
+            if (op === undefined) {
+                num1 += element.innerText;
+                document.getElementById('screen').innerText = "".concat(num1);
+            }
+            else {
+                num2 += element.innerText;
+                document.getElementById('screen').innerText = "".concat(num1, " ").concat(op, " ").concat(num2);
+            }
         }
-
-    }) 
-})
-
-document.getElementById('C-button').addEventListener('click',(event) =>{
+        else {
+            if (element.innerText === '.') {
+                if (!num1)
+                    return;
+            }
+            if (op === undefined) {
+                num1 += element.innerText;
+                document.getElementById('screen').innerText = "".concat(num1);
+            }
+            else if (op2 === undefined) {
+                num2 += element.innerText;
+                document.getElementById('screen').innerText = "".concat(num1, " ").concat(op, " ").concat(num2);
+            }
+            else {
+                num3 += element.innerText;
+                document.getElementById('screen').innerText = "".concat(num1, " ").concat(op, " ").concat(num2, " ").concat(op2, " ").concat(num3);
+            }
+        }
+    });
+});
+document.getElementById('C-button').addEventListener('click', function (event) {
     num1 = '';
     op = undefined;
     num2 = '';
-    document.getElementById('screen').innerText = ''
-    
-}
-
-)
-
-document.getElementById('erase').addEventListener('click',(event) =>{
-    if(num2){
-        num2 = num2.replace( num2[num2.length - 1],'')
-        document.getElementById('screen').innerText = `${num1} ${op} ${num2}`
+    document.getElementById('screen').innerText = '';
+});
+document.getElementById('erase').addEventListener('click', function (event) {
+    if (num2) {
+        num2 = num2.replace(num2[num2.length - 1], '');
+        document.getElementById('screen').innerText = "".concat(num1, " ").concat(op, " ").concat(num2);
     }
-    else if (op !== undefined ){
-        op = undefined
-        document.getElementById('screen').innerText = `${num1}`
-    }else{
-       num1 = num1.replace( num1[num1.length - 1],'')
-       document.getElementById('screen').innerText = `${num1}`
+    else if (op !== undefined) {
+        op = undefined;
+        document.getElementById('screen').innerText = "".concat(num1);
     }
-}
-
-)
-
-//function displayButtonInfo(value){
-    //alert(`${value}`);
-    
-//}
-  
+    else {
+        num1 = num1.replace(num1[num1.length - 1], '');
+        document.getElementById('screen').innerText = "".concat(num1);
+    }
+});
