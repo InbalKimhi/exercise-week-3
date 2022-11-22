@@ -14,8 +14,15 @@ html body {
 }
 html body #history {
   display: none;
+  flex-direction: column;
   grid-area: his;
   background-color: rgb(214, 209, 209);
+}
+html body #history #headline {
+  border-bottom: 2px solid rgb(54, 54, 54);
+  width: 100%;
+  height: 4%;
+  text-align: center;
 }
 html body #main {
   grid-area: main;
@@ -82,7 +89,6 @@ html body #main .main-buttons .number-buttons {
   color: black;
   font-weight: bold;
   border-radius: 6%;
-  font-family: Georgia, "Times New Roman", Times, serif;
 }
 html body #main .main-buttons .number-buttons:hover {
   background-color: rgb(212, 212, 212);
@@ -124,6 +130,70 @@ html body #main .right-side #endR {
 }
 html body #scientific {
   display: none;
+  grid-area: sci;
+  background-color: rgb(250, 173, 173);
+}
+
+body.darker #history {
+  background-color: rgb(209, 212, 214);
+}
+body.darker #main {
+  background-color: rgb(2, 50, 77);
+  border: solid rgb(2, 50, 77);
+  color: white;
+}
+body.darker #main button {
+  background-color: rgb(21, 81, 115);
+  border: solid rgb(2, 50, 77);
+}
+body.darker #main .left-side {
+  color: white;
+}
+body.darker #main .left-side .mode:hover {
+  background-color: rgb(78, 92, 169);
+  font-weight: bold;
+}
+body.darker #main .view {
+  color: white;
+}
+body.darker #main .view #C-button {
+  color: white;
+}
+body.darker #main .view #C-button:hover {
+  background-color: rgb(78, 92, 169);
+  font-weight: bold;
+}
+body.darker #main .view div {
+  background-color: rgb(21, 81, 115);
+  border: solid rgb(2, 50, 77);
+}
+body.darker #main .view #screen {
+  background-color: rgb(30, 17, 44);
+  border-color: black;
+}
+body.darker #main .main-buttons .number-buttons {
+  background-color: rgb(58, 111, 142);
+  color: black;
+  color: white;
+}
+body.darker #main .main-buttons .number-buttons:hover {
+  background-color: rgb(78, 92, 169);
+}
+body.darker #main .main-buttons #± {
+  background-color: rgb(21, 81, 115);
+  color: white;
+}
+body.darker #main .main-buttons #±:hover {
+  background-color: rgb(78, 92, 169);
+}
+body.darker #main .right-side button {
+  color: white;
+}
+body.darker #main .right-side button:hover {
+  background-color: rgb(78, 92, 169);
+  font-weight: bold;
+}
+body.darker #scientific {
   grid-area: sci;
   background-color: rgb(250, 173, 173);
 }

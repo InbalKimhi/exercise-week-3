@@ -8,7 +8,6 @@ var result = '';
 var op2 = undefined;
 var num3 = '';
 var ops = Array.from(document.getElementsByClassName("operators"));
-var bla = document.getElementById('screen').innerText;
 ops.map(function (x) {
     x.addEventListener('click', function (event) {
         var element = event.target;
@@ -34,20 +33,16 @@ ops.map(function (x) {
             }
         }
         else { // if scientific mode on 
-            console.log('science');
             if (!num1)
                 return;
             if (element.innerText === '=') {
                 if (num3) {
                     result = eval(num1 + op + num2 + op2 + num3);
-                    console.log(result);
                     num1 = '';
                     op = undefined;
                     num2 = '';
                     op2 = undefined;
                     num3 = '';
-                    console.log(result);
-                    console.log(result);
                     document.getElementById('screen').innerText = "".concat(result);
                 }
                 else {

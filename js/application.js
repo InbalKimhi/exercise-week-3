@@ -16,31 +16,26 @@ modes.map(function (button) {
     button.addEventListener('click', function (event) {
         var el = event.target;
         if (el.id === 'light-mode') {
-            console.log('light');
             document.body.classList.toggle('dark');
             if (lightState.on) {
                 el.style.backgroundColor = 'rgb(253, 231, 203)';
                 lightState.on = false;
             }
             else {
-                el.style.backgroundColor = 'rgb(206, 228, 248)';
+                el.style.backgroundColor = 'revert-layer';
                 lightState.on = true;
             }
         }
         if (el.id === 'history-mode') {
             if (!historyState.on) {
                 el.style.backgroundColor = 'rgb(253, 231, 203)';
-                console.log(historyState.on);
                 historyState.on = true;
-                document.getElementById('history').style.display = 'block';
-                console.log(historyState.on);
+                document.getElementById('history').style.display = 'flex';
             }
             else {
-                el.style.backgroundColor = 'rgb(206, 228, 248)';
-                console.log(historyState.on);
+                el.style.backgroundColor = 'revert-layer';
                 historyState.on = false;
                 document.getElementById('history').style.display = 'none';
-                console.log(historyState.on);
             }
         }
         if (el.id === 'scientific-mode') {
@@ -54,9 +49,10 @@ modes.map(function (button) {
                 num2 = '';
                 op2 = undefined;
                 num3 = '';
+                document.getElementById('screen').innerText = '';
             }
             else {
-                el.style.backgroundColor = 'rgb(206, 228, 248)';
+                el.style.backgroundColor = 'revert-layer';
                 scientificState.on = false;
                 document.getElementById('scientific').style.display = 'none';
                 // resetting values
@@ -65,7 +61,24 @@ modes.map(function (button) {
                 num2 = '';
                 op2 = undefined;
                 num3 = '';
+                document.getElementById('screen').innerText = '';
             }
         }
+        if (el.id === 'gear') {
+            console.log('in gear');
+            window.location.href = '../html/config.html';
+        }
     });
+});
+document.addEventListener('DOMContentLoaded', function () {
+    var url = window.location.search;
+    var config = new URLSearchParams(url);
+    if (url) {
+        document.body.style.backgroundColor = config.get('color');
+        document.body.style.fontFamily = config.get('font');
+        if (config.get('daylight') === 'dark') {
+            console.log('after');
+            document.body.classList.toggle('darker');
+        }
+    }
 });

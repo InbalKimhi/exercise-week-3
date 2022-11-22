@@ -4,36 +4,37 @@
 
     </head>
     <body>
-        <form>
+        <form method="get" action="/html/index.html">
             <label>choose page’s background color:
-                <select>
+                <select name="color">
                     <option value="" selected="selected">Select One</option>
-                    <option name="color" value="green">green</option>
-                    <option name="color" value="purple">purple</option>
-                    <option name="color" value="grey">grey</option>
-                    <option name="color" value="yellow">yellow</option>
-                    <option name="color" value="orange">orange</option>
+                    <option  value="green">green</option>
+                    <option  value="purple">purple</option>
+                    <option  value="grey">grey</option>
+                    <option  value="yellow">yellow</option>
+                    <option  value="orange">orange</option>
                 </select>
             </label>
             <label >choose page’s font family:
-                <select>
+                <select name="font">
                     <option  value="" selected="selected">Select One</option>
-                    <option name="font" value="Courier New">'Courier New', Courier, monospace</option>
-                    <option name="font" value="Franklin Gothic Medium">'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif</option>
-                    <option name="font" value="Times New Roman">'Times New Roman', Times, serif</option>
-                    <option name="font" value="Lucida Sans">'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif</option>
-                    <option name="font" value="'Gill Sans">'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif</option>
+                    <option  value="'Courier New', Courier, monospace">'Courier New', Courier, monospace</option>
+                    <option  value="'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif</option>
+                    <option  value="'Times New Roman', Times, serif">'Times New Roman', Times, serif</option>
+                    <option  value="'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif</option>
+                    <option  value="'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif</option>
                 </select>
             </label>
             <div>
                 select mode
                 <label > dark
-                    <input type="radio" name="mode" />
+                    <input type="radio" name="daylight" value="dark" />
                 </label>
                 <lable> light
-                    <input type="radio" name="mode"  />
+                    <input type="radio" name="daylight" value="light"  />
                 </lable>
             </div>
+            <div> <input type="submit"></div>
         </form>
     </body>
 </html>

@@ -34,7 +34,7 @@ modes.map( (button) => {
             if(!historyState.on){
                 el.style.backgroundColor = 'rgb(253, 231, 203)';               
                 historyState.on = true;
-                document.getElementById('history').style.display = 'block'; 
+                document.getElementById('history').style.display = 'flex'; 
 
 
             }else{
@@ -51,11 +51,12 @@ modes.map( (button) => {
                 document.getElementById('scientific').style.display = 'block';
                 scientificState.on = true;
                 // resetting values
-                num1= ''
-                op = undefined
-                num2 = ''
-                op2 = undefined
-                num3 = ''
+                num1= '';
+                op = undefined;
+                num2 = '';
+                op2 = undefined;
+                num3 = '';
+                document.getElementById('screen').innerText = '';
                 
 
             }else{
@@ -63,15 +64,38 @@ modes.map( (button) => {
                 scientificState.on = false;
                 document.getElementById('scientific').style.display = 'none';
                 // resetting values
-                num1= ''
-                op = undefined
-                num2 = ''
-                op2 = undefined
-                num3 = ''
+                num1= '';
+                op = undefined;
+                num2 = '';
+                op2 = undefined;
+                num3 = '';
+                document.getElementById('screen').innerText = '';
         }
+        }
+
+        if(el.id === 'gear'){
+            console.log('in gear')
+            window.location.href = '../html/config.html'
+            
         }
         
     })
 });
 
+document.addEventListener('DOMContentLoaded', () =>{
+const url = window.location.search;
+let config = new URLSearchParams(url);
+
+if(url){
+    
+    document.body.style.backgroundColor = config.get('color');
+    document.body.style.fontFamily = config.get('font');
+
+    if(config.get('daylight')  === 'dark'){
+        console.log('after');
+        document.body.classList.toggle('darker');
+    }
+
+}
+});
 

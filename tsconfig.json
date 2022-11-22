@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
-    "outDir": "./dist/out-tsc",
-    "target": "es2020",
-    "lib": ["dom", "es2020"],
+    "outDir": "./js",
+    "target": "es2021",
+    "lib": ["dom", "es2021"],
     "watch": true
     }
 }
