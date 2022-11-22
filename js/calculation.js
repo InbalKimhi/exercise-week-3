@@ -8,6 +8,11 @@ var result = '';
 var op2 = undefined;
 var num3 = '';
 var ops = Array.from(document.getElementsByClassName("operators"));
+function createHistory(cal) {
+    var div = document.createElement('div');
+    document.getElementById('history').appendChild(div);
+    div.innerHTML = cal;
+}
 ops.map(function (x) {
     x.addEventListener('click', function (event) {
         var element = event.target;
@@ -16,12 +21,16 @@ ops.map(function (x) {
                 return;
             if (element.innerText === '=') {
                 result = eval(num1 + op + num2);
+                var s = "".concat(num1, " ").concat(op, " ").concat(num2, " = ").concat(result);
+                createHistory(s);
                 num1 = '';
                 op = undefined;
                 num2 = '';
                 document.getElementById('screen').innerText = "".concat(result);
             }
             else if (num1 && num2 && op !== '=') {
+                var s = "".concat(num1, " ").concat(op, " ").concat(num2, " = ").concat(eval(num1 + op + num2));
+                createHistory(s);
                 num1 = eval(num1 + op + num2);
                 op = element.id;
                 num2 = '';
@@ -38,6 +47,8 @@ ops.map(function (x) {
             if (element.innerText === '=') {
                 if (num3) {
                     result = eval(num1 + op + num2 + op2 + num3);
+                    var s = "".concat(num1, " ").concat(op, " ").concat(num2, " ").concat(op, " ").concat(num3, "= ").concat(result);
+                    createHistory(s);
                     num1 = '';
                     op = undefined;
                     num2 = '';
@@ -46,6 +57,8 @@ ops.map(function (x) {
                     document.getElementById('screen').innerText = "".concat(result);
                 }
                 else {
+                    var s = "".concat(num1, " ").concat(op, " ").concat(num2, " = ").concat(eval(num1 + op + num2));
+                    createHistory(s);
                     result = eval(num1 + op + num2);
                     num1 = '';
                     op = undefined;
@@ -56,6 +69,8 @@ ops.map(function (x) {
                 }
             }
             else if (num1 && num2 && num3 && op2 !== '=') {
+                var s = "".concat(num1, " ").concat(op, " ").concat(num2, " ").concat(op, " ").concat(num3, "= ").concat(eval(num1 + op + num2 + op2 + num3));
+                createHistory(s);
                 num1 = eval(num1 + op + num2 + op2 + num3);
                 op = element.id;
                 num2 = '';

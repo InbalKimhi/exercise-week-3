@@ -10,13 +10,22 @@ let num3 = '';
 
 const ops = Array.from(document.getElementsByClassName("operators"));
 
+function createHistory(cal: string){
+ let div: Element= document.createElement('div');
+    document.getElementById('history').appendChild(div);
+    div.innerHTML = cal;
+}
+
+
 ops.map( x => {
     x.addEventListener('click',(event) =>{ 
         let element = event.target as HTMLElement;
         if(!scientificState.on){
             if(!num1) return;
-        if (element.innerText === '='){
+          if (element.innerText === '='){
             result = eval(num1 + op + num2);
+            let s = `${num1} ${op} ${num2} = ${result}`
+            createHistory(s)
             num1= ''
             op = undefined
             num2 = ''
@@ -24,6 +33,8 @@ ops.map( x => {
             
 
         }else if(num1 && num2 && op !== '='){
+            let s = `${num1} ${op} ${num2} = ${eval(num1 + op + num2)}`
+            createHistory(s)
             num1 = eval(num1 + op + num2);
             op = element.id;
             num2 = '';
@@ -41,13 +52,18 @@ ops.map( x => {
             if (element.innerText === '='){
                 if(num3){
                 result = eval(num1 + op + num2 + op2 + num3);
+                let s = `${num1} ${op} ${num2} ${op} ${num3}= ${result}`
+                createHistory(s)
                 num1= '';
                 op = undefined;
                 num2 = '';
                 op2 = undefined;
                 num3 = '';
                 document.getElementById('screen').innerText = `${result}`;
+
                 }else{
+                    let s = `${num1} ${op} ${num2} = ${eval(num1 + op + num2)}`
+                    createHistory(s)
                     result = eval(num1 + op + num2);
                     num1= ''
                     op = undefined
@@ -59,6 +75,9 @@ ops.map( x => {
                 }
 
             }else if(num1 && num2 && num3 && op2 !== '='){
+                let s = `${num1} ${op} ${num2} ${op} ${num3}= ${eval(num1 + op + num2 + op2 + num3)}`
+                createHistory(s)
+
                 num1 = eval(num1 + op + num2 + op2 + num3);
                 op = element.id;
                 num2 = '';
