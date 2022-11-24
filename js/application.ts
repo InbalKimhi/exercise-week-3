@@ -1,3 +1,8 @@
+// theres a lot of bugs in my code and theres a lot i could have done better, due to the time difficulty and the learning obstacles I have 
+// faced, I think I've gave the best I could under the circumstances. I finished until part 4, 1 and half of the layout of 2 (couldnt find the rest of the icons).
+// I would appreciate taking all of that into consideration when checking this assignment.
+// also when pressing on the diffrent states buttons press on the sides and not middle.
+
 function infoButton(){
     alert('Inbal Kimhi\n stage one\n this app is a calculator app. A calculator is a device that performs arithmetic operations on numbers.\n enjoy your calculations :)');
 };
