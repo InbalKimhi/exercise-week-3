@@ -230,6 +230,16 @@ html{
                 grid-row: 7/9;
                 @include scientific-cells()
             }
+
+            .scidiv{
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                    img{
+                        width:40%;
+                        height: 50%;
+                    }
+            }
         }
     }
 }
