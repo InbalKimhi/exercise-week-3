@@ -15,88 +15,140 @@ function createHistory(cal: string){
     document.getElementById('history').appendChild(div);
     div.innerHTML = cal;
 }
+function startVar(){
+    num1= '';
+    op = undefined;
+    num2 = '';
+    op2 = undefined;
+    num3 = '';
+}
 
+function addOp(element){
+    if(!num1) return;
+    op = element.id;
+    let s = `${num1} ${op}`
+    return  s;
+    
+};
 
-ops.map( x => {
-    x.addEventListener('click',(event) =>{ 
-        let element = event.target as HTMLElement;
-        if(!scientificState.on){
-            if(!num1) return;
-          if (element.innerText === '='){
-            result = eval(num1 + op + num2);
-            let s = `${num1} ${op} ${num2} = ${result}`
-            createHistory(s)
-            num1= ''
-            op = undefined
-            num2 = ''
+function addOpSci(element){
+    if(!num1) return;
+    
+    if(op){
+        op2 = element.id;
+
+    }else{
+        op = element.id;
+    }
+};
+
+function calc(n1,o,n2){
+    return eval(n1 + o + n2);
+};
+
+function calcSci(n1, o, n2, o2, n3){
+    return  eval(n1 + o + n2 + o2 + n3);
+};
+
+function opHandler(element){
+    if(!scientificState.on){ // sci off
+        if (element.innerText === '='){
+            result = calc(num1,op,num2)
+            createHistory(`${num1} ${op} ${num2} = ${result}`)
+            startVar()
+
             document.getElementById('screen').innerText = `${result}`
             
-
         }else if(num1 && num2 && op !== '='){
-            let s = `${num1} ${op} ${num2} = ${eval(num1 + op + num2)}`
-            createHistory(s)
-            num1 = eval(num1 + op + num2);
-            op = element.id;
+            createHistory(`${num1} ${op} ${num2} = ${calc(num1, op, num2)}`);
+            num1 = calc(num1, op, num2);
+            addOp(element);
             num2 = '';
+
             document.getElementById('screen').innerText = `${num1} ${op}`
             
 
-        }else{
-            op = element.id;
-            document.getElementById('screen').innerText = `${num1} ${op}`
-            
+        }else{ 
+            addOp(element)
+            document.getElementById('screen').innerText =  `${num1} ${op}`
         }
-        }else{ // if scientific mode on 
-            if(!num1) return;
 
-            if (element.innerText === '='){
-                if(num3){
-                result = eval(num1 + op + num2 + op2 + num3);
-                let s = `${num1} ${op} ${num2} ${op} ${num3}= ${result}`
-                createHistory(s)
-                num1= '';
-                op = undefined;
-                num2 = '';
-                op2 = undefined;
-                num3 = '';
-                document.getElementById('screen').innerText = `${result}`;
 
-                }else{
-                    let s = `${num1} ${op} ${num2} = ${eval(num1 + op + num2)}`
-                    createHistory(s)
-                    result = eval(num1 + op + num2);
-                    num1= ''
-                    op = undefined
-                    num2 = ''
-                    op2 = undefined
-                    num3 = ''
-                    document.getElementById('screen').innerText = `${result}`
-    
-                }
-
-            }else if(num1 && num2 && num3 && op2 !== '='){
-                let s = `${num1} ${op} ${num2} ${op} ${num3}= ${eval(num1 + op + num2 + op2 + num3)}`
-                createHistory(s)
-
-                num1 = eval(num1 + op + num2 + op2 + num3);
-                op = element.id;
-                num2 = '';
-                op2 = undefined
-                num3 = ''
-                document.getElementById('screen').innerText = `${num1} ${op}`
-                
-    
-            }else if(op){
-                op2 = element.id;
-                document.getElementById('screen').innerText = `${num1} ${op} ${num2} ${op2}`
+    }else{ // sci on 
+        if (element.innerText === '='){
+            if(num3){
+            result = calcSci(num1,op ,num2, op2, num3);
+            createHistory(`${num1} ${op} ${num2} ${op} ${num3} = ${result}`)
+            startVar()
+            document.getElementById('screen').innerText = `${result}`;
 
             }else{
-                op = element.id;
-                document.getElementById('screen').innerText = `${num1} ${op}`
+                createHistory(`${num1} ${op} ${num2} = ${calc(num1, op, num2)}`)
+                result = calc(num1, op, num2);
+                startVar()
+                document.getElementById('screen').innerText = `${result}`
+
             }
+
+        }else if(num1 && num2 && num3 && op2 !== '='){
+
+            createHistory(`${num1} ${op} ${num2} ${op} ${num3}= ${calcSci(num1,op,num2,op2,num3)}`)
+            startVar()
+            num1 = calcSci(num1,op,num2,op2,num3);
+            addOpSci(element) 
+
+            document.getElementById('screen').innerText = `${num1} ${op}`
+            
+
+        }else if(op){
+            addOpSci(element)
+            document.getElementById('screen').innerText = `${num1} ${op} ${num2} ${op2}`
+
+        }else{
+            addOpSci(element)
+            document.getElementById('screen').innerText = `${num1} ${op}`
         }
+    }}
+
+
+function addNumber(element: HTMLElement){
+    if(element.innerText === '.'){
+        if(!num1) return;
+    }
+
+    if(!scientificState.on){
+
+        if(op === undefined){
+            num1 += element.innerText;
+            document.getElementById('screen').innerText = `${num1}`
+            
+        }else{
+            num2 += element.innerText;
+            document.getElementById('screen').innerText = `${num1} ${op} ${num2}`
+        }
+
+
+    }else{
+
+        if(op === undefined){
+            num1 += element.innerText;
+            document.getElementById('screen').innerText = `${num1}`
+                
+        }else if(op2 === undefined){
+            num2 += element.innerText;
+            document.getElementById('screen').innerText = `${num1} ${op} ${num2}`
+        }else{
+            num3 += element.innerText
+            document.getElementById('screen').innerText = `${num1} ${op} ${num2} ${op2} ${num3}`
+        }
+    }
         
-       
+}
+    
+ops.map( x => {
+    x.addEventListener('click',(event) =>{ 
+        let element = event.target as HTMLElement;     
+        opHandler(element) 
     })
 })
 
@@ -107,51 +159,15 @@ const Numbers = Array.from(document.getElementsByClassName("number-buttons"))
 Numbers.map( (y) => {
     y.addEventListener('click',(event)=>{
         let element: HTMLElement = event.target as HTMLElement;
-        if(!scientificState.on){
-
-            if(element.innerText === '.'){
-                if(!num1) return;
-                
-            }
-            
-            if(op === undefined){
-                num1 += element.innerText;
-                document.getElementById('screen').innerText = `${num1}`
-                
-            }else{
-                num2 += element.innerText;
-                document.getElementById('screen').innerText = `${num1} ${op} ${num2}`
-            }
-    
-        }else{
-
-            if(element.innerText === '.'){
-                if(!num1) return;
-                
-            }
-            if(op === undefined){
-                num1 += element.innerText;
-                document.getElementById('screen').innerText = `${num1}`
-                
-            }else if(op2 === undefined){
-                num2 += element.innerText;
-                document.getElementById('screen').innerText = `${num1} ${op} ${num2}`
-            }else{
-                num3 += element.innerText
-                document.getElementById('screen').innerText = `${num1} ${op} ${num2} ${op2} ${num3}`
-            }
-        }
+        addNumber(element);
         
     }) 
 })
 
 
 document.getElementById('C-button').addEventListener('click',(event) =>{
-    num1 = '';
-    op = undefined;
-    num2 = '';
-    document.getElementById('screen').innerText = ''
-    
+    startVar();
+    document.getElementById('screen').innerText = '';
 }
 
 )
