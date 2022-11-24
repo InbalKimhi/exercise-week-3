@@ -48,14 +48,11 @@ modes.map( (button) => {
         if(el.id === 'scientific-mode'){
             if(!scientificState.on){
                 el.style.backgroundColor = 'rgb(253, 231, 203)';
-                document.getElementById('scientific').style.display = 'block';
+                document.getElementById('scientific').style.display = 'grid';
                 scientificState.on = true;
                 // resetting values
-                num1= '';
-                op = undefined;
-                num2 = '';
-                op2 = undefined;
-                num3 = '';
+                startVar()
+                deleteHistory()
                 document.getElementById('screen').innerText = '';
                 
 
@@ -64,11 +61,8 @@ modes.map( (button) => {
                 scientificState.on = false;
                 document.getElementById('scientific').style.display = 'none';
                 // resetting values
-                num1= '';
-                op = undefined;
-                num2 = '';
-                op2 = undefined;
-                num3 = '';
+                startVar()
+                deleteHistory()
                 document.getElementById('screen').innerText = '';
         }
         }

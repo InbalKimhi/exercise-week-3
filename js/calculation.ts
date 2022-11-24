@@ -1,6 +1,4 @@
-// NUMBER   1-.RESLT
-// SEC       -ץ
-// NUBER
+
 let num1 = '';
 let op = undefined;
 let num2 = '';
@@ -144,7 +142,13 @@ function addNumber(element: HTMLElement){
     }
         
 }
-    
+
+function deleteHistory(){
+    document.getElementById('history').querySelectorAll('div').forEach((el) =>{
+        el.remove();
+    });
+}
+
 ops.map( x => {
     x.addEventListener('click',(event) =>{ 
         let element = event.target as HTMLElement;     
@@ -167,6 +171,7 @@ Numbers.map( (y) => {
 
 document.getElementById('C-button').addEventListener('click',(event) =>{
     startVar();
+    deleteHistory()
     document.getElementById('screen').innerText = '';
 }
 

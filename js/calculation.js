@@ -1,6 +1,3 @@
-// NUMBER   1-.RESLT
-// SEC       -ץ
-// NUBER
 var num1 = '';
 var op = undefined;
 var num2 = '';
@@ -129,6 +126,11 @@ function addNumber(element) {
         }
     }
 }
+function deleteHistory() {
+    document.getElementById('history').querySelectorAll('div').forEach(function (el) {
+        el.remove();
+    });
+}
 ops.map(function (x) {
     x.addEventListener('click', function (event) {
         var element = event.target;
@@ -144,6 +146,7 @@ Numbers.map(function (y) {
 });
 document.getElementById('C-button').addEventListener('click', function (event) {
     startVar();
+    deleteHistory();
     document.getElementById('screen').innerText = '';
 });
 document.getElementById('erase').addEventListener('click', function (event) {
