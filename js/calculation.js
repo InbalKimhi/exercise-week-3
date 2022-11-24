@@ -71,7 +71,7 @@ function opHandler(element) {
         if (element.innerText === '=') {
             if (num3) {
                 result = calcSci(num1, op, num2, op2, num3);
-                createHistory("".concat(num1, " ").concat(op, " ").concat(num2, " ").concat(op, " ").concat(num3, " = ").concat(result));
+                createHistory("".concat(num1, " ").concat(op, " ").concat(num2, " ").concat(op2, " ").concat(num3, " = ").concat(result));
                 startVar();
                 document.getElementById('screen').innerText = "".concat(result);
             }
@@ -83,7 +83,7 @@ function opHandler(element) {
             }
         }
         else if (num1 && num2 && num3 && op2 !== '=') {
-            createHistory("".concat(num1, " ").concat(op, " ").concat(num2, " ").concat(op, " ").concat(num3, "= ").concat(calcSci(num1, op, num2, op2, num3)));
+            createHistory("".concat(num1, " ").concat(op, " ").concat(num2, " ").concat(op2, " ").concat(num3, "= ").concat(calcSci(num1, op, num2, op2, num3)));
             startVar();
             num1 = calcSci(num1, op, num2, op2, num3);
             addOpSci(element);

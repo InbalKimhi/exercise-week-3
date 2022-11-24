@@ -78,7 +78,7 @@ function opHandler(element){
         if (element.innerText === '='){
             if(num3){
             result = calcSci(num1,op ,num2, op2, num3);
-            createHistory(`${num1} ${op} ${num2} ${op} ${num3} = ${result}`)
+            createHistory(`${num1} ${op} ${num2} ${op2} ${num3} = ${result}`)
             startVar()
             document.getElementById('screen').innerText = `${result}`;
 
@@ -92,7 +92,7 @@ function opHandler(element){
 
         }else if(num1 && num2 && num3 && op2 !== '='){
 
-            createHistory(`${num1} ${op} ${num2} ${op} ${num3}= ${calcSci(num1,op,num2,op2,num3)}`)
+            createHistory(`${num1} ${op} ${num2} ${op2} ${num3}= ${calcSci(num1,op,num2,op2,num3)}`)
             startVar()
             num1 = calcSci(num1,op,num2,op2,num3);
             addOpSci(element) 
