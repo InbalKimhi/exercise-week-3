@@ -3,6 +3,7 @@
 // I would appreciate taking all of that into consideration when checking this assignment.
 // also when pressing on the diffrent states buttons press on the sides and not middle.
 
+
 function infoButton(){
     alert('Inbal Kimhi\n stage one\n this app is a calculator app. A calculator is a device that performs arithmetic operations on numbers.\n enjoy your calculations :)');
 };
