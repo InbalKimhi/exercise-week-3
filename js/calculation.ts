@@ -6,6 +6,7 @@ let result = '';
 let op2 = undefined;
 let num3 = '';
 
+
 const ops = Array.from(document.getElementsByClassName("operators"));
 
 function createHistory(cal: string){
